@@ -1,5 +1,9 @@
 import curses
-import curses.wrapper
+# in python3, curses lib changed so do this to support both python 2 and 3
+try:
+    from curses import wrapper
+except:
+    import curses.wrapper as wrapper
 from grid import Grid, OutOfBoundsException
 import time
 import random
@@ -65,5 +69,5 @@ def doit(arg):
     cs.create(grid_y + 1, grid_x + 2, g)
     
 if __name__ == "__main__":
-    curses.wrapper(doit)
+    wrapper(doit)
         
